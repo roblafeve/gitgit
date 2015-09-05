@@ -1,0 +1,19 @@
+{
+  "name": "gitgit",
+  "version": "0.1.0",
+  "description": "A web-based client for displaying GitHub notifications",
+  "main": "app/index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/roblafeve/gitgit.git"
+  },
+  "author": "Rob LaFeve",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/roblafeve/gitgit/issues"
+  },
+  "homepage": "https://github.com/roblafeve/gitgit#readme"
+}
