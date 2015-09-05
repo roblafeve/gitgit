@@ -4,6 +4,7 @@
   "description": "A web-based client for displaying GitHub notifications",
   "main": "app/index.js",
   "scripts": {
+    "start": "node_modules/.bin/gulp",
     "test": "test"
   },
   "repository": {
@@ -15,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/roblafeve/gitgit/issues"
   },
-  "homepage": "https://github.com/roblafeve/gitgit#readme"
+  "homepage": "https://github.com/roblafeve/gitgit#readme",
+  "devDependencies": {
+    "gulp": "^3.9.0"
+  }
 }
