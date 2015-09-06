@@ -1,9 +1,11 @@
 var gulp          = require('gulp');
-var autoprefixer  = require('gulp-autoprefixer');
-var concat        = require('gulp-concat');
 var ngTemp        = require('gulp-angular-templatecache');
+var autoprefixer  = require('gulp-autoprefixer');
 var babel         = require('gulp-babel');
+var concat        = require('gulp-concat');
+var uglify        = require('gulp-uglify');
 var stream        = require('streamqueue');
+var bowerFiles    = require('main-bower-files');
 
 var paths = {
   src: {
@@ -20,6 +22,11 @@ var paths = {
 }
 
 
+// Build
+
+gulp.task('build', ['index', 'js', 'css']);
+
+
 // Builds
 
 gulp.task('index', function(){
@@ -30,11 +37,12 @@ gulp.task('index', function(){
 gulp.task('js', function(){
   stream(
     { objectMode: true },
-    gulp.src(paths.src.js),
+    gulp.src(bowerFiles()),
+    gulp.src(paths.src.js)
+      .pipe(babel()),
     gulp.src(paths.src.temps)
-      .pipe(ngTemp({standalone: true}))
+      .pipe(ngTemp())
   )
-    .pipe(babel())
     .pipe(concat(paths.dest.js))
     .pipe(gulp.dest(paths.dest.dir))
 });
@@ -51,8 +59,9 @@ gulp.task('css', function(){
 
 gulp.task('watch', function(){
   gulp.watch(paths.src.index, ['index']);
-  gulp.watch(paths.src.js, ['js']);
-  gulp.watch(paths.src.css, ['css']);
+  gulp.watch(paths.src.js,    ['js']);
+  gulp.watch(paths.src.temps, ['js']);
+  gulp.watch(paths.src.css,   ['css']);
 });
 
 
