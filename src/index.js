@@ -2,6 +2,7 @@
 
 angular.module('app', [
   'templates',
+  'services',
   'directives'
 ]);
 
@@ -9,6 +10,7 @@ angular.module('app', [
 // Application Submodules
 
 angular.module('directives', []);
+angular.module('services', []);
 
 
 // Bootstrap App when DOM is ready
