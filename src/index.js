@@ -12,7 +12,6 @@ angular.module('directives', []);
 angular.module('services', []);
 
 
-
 // Bootstrap App when DOM is ready
 
 angular.element(document).ready( () => {
