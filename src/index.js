@@ -6,11 +6,11 @@ angular.module('app', [
   'directives'
 ]);
 
-
 // Application Submodules
 
 angular.module('directives', []);
 angular.module('services', []);
+
 
 
 // Bootstrap App when DOM is ready

@@ -1,14 +1,16 @@
 angular.module("directives").controller("directiveCtrl", () => {
-  this.foo = "FOO";
+  var ctrl = {};
+  ctrl.foo = "FOO";
+  return ctrl;
 });
 
-angular.module("directives").directive("directive", () => {
+angular.module("directives").directive("notifications", () => {
   return {
     restrict: "C",
     templateUrl: "directives/directive/directive.html",
-    controller: "directiveCtrl as dir",
-    bindToContrller: {
-      example: "="
-    }
+    controller: "directiveCtrl",
+    controllerAs: "notifications",
+    scope: true,
+    bindToContrller: {}
   }
 });

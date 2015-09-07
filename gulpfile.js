@@ -1,16 +1,17 @@
-var gulp          = require('gulp');
-var ngTemp        = require('gulp-angular-templatecache');
-var autoprefixer  = require('gulp-autoprefixer');
-var babel         = require('gulp-babel');
-var concat        = require('gulp-concat');
-var uglify        = require('gulp-uglify');
-var stream        = require('streamqueue');
-var bowerFiles    = require('main-bower-files');
+var gulp         = require('gulp'),
+    ngTemp       = require('gulp-angular-templatecache'),
+    autoprefixer = require('gulp-autoprefixer'),
+    babel        = require('gulp-babel'),
+    concat       = require('gulp-concat'),
+    uglify       = require('gulp-uglify'),
+    stream       = require('streamqueue'),
+    bowerFiles   = require('main-bower-files'),
+    ngAnnotate   = require('gulp-ng-annotate');
 
 var paths = {
   src: {
     index: 'src/index.html',
-    js:    'src/**/*.js',
+    js:    ['src/**/*.js', '!src/**/*.spec.js'],
     temps: ['src/**/*.html', '!src/index.html'],
     css:   'src/**/*.css',
   },
@@ -39,7 +40,8 @@ gulp.task('js', function(){
     { objectMode: true },
     gulp.src(bowerFiles()),
     gulp.src(paths.src.js)
-      .pipe(babel()),
+      .pipe(babel())
+      .pipe(ngAnnotate()),
     gulp.src(paths.src.temps)
       .pipe(ngTemp())
   )
