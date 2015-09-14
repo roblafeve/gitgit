@@ -1,18 +1,19 @@
-describe('myController function', function() {
+describe('notificationsCtrl', function() {
 
-  var controller, scope;
-
+  var controller;
   beforeEach(module('directives'));
+  beforeEach(module('services'));
+  beforeEach(inject( (
+      $controller,
+      notificationsSrvc
+    ) => {
+      controller = $controller("directiveCtrl");
+    })
+  );
 
-  beforeEach(inject(function($rootScope, $controller) {
-    scope = $rootScope.$new();
-    controller = $controller("directiveCtrl", {
-      $scope: scope
-    });
-  }));
 
-  it('should be ok', function() {
-    expect(controller.foo).to.equal('FOO');
+  it('should have a data object', () => {
+    assert.isObject(controller.data, 'data property is an object')
   });
 
 });

@@ -32,11 +32,15 @@
     "karma": "^0.13.9",
     "karma-babel-preprocessor": "^5.2.2",
     "karma-chai": "^0.1.0",
+    "karma-clear-screen-reporter": "0.0.1",
     "karma-mocha": "^0.2.0",
     "karma-phantomjs-launcher": "^0.2.1",
     "main-bower-files": "^2.9.0",
     "mocha": "^2.3.0",
     "phantomjs": "^1.9.18",
     "streamqueue": "^1.1.1"
+  },
+  "dependencies": {
+    "express": "^4.13.3"
   }
 }

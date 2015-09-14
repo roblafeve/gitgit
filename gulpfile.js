@@ -1,12 +1,12 @@
-var gulp         = require('gulp'),
-    ngTemp       = require('gulp-angular-templatecache'),
-    autoprefixer = require('gulp-autoprefixer'),
-    babel        = require('gulp-babel'),
-    concat       = require('gulp-concat'),
-    uglify       = require('gulp-uglify'),
-    stream       = require('streamqueue'),
-    bowerFiles   = require('main-bower-files'),
-    ngAnnotate   = require('gulp-ng-annotate');
+var gulp         = require('gulp');
+var ngTemp       = require('gulp-angular-templatecache');
+var autoprefixer = require('gulp-autoprefixer');
+var babel        = require('gulp-babel');
+var concat       = require('gulp-concat');
+var uglify       = require('gulp-uglify');
+var stream       = require('streamqueue');
+var bowerFiles   = require('main-bower-files');
+var ngAnnotate   = require('gulp-ng-annotate');
 
 var paths = {
   src: {
@@ -20,24 +20,22 @@ var paths = {
     css: 'index.css',
     dir: 'app/',
   },
-}
-
+};
 
 // Build
 
 gulp.task('build', ['index', 'js', 'css']);
 
-
 // Builds
 
-gulp.task('index', function(){
+gulp.task('index', function() {
   gulp.src(paths.src.index)
-    .pipe(gulp.dest(paths.dest.dir))
+    .pipe(gulp.dest(paths.dest.dir));
 });
 
-gulp.task('js', function(){
+gulp.task('js', function() {
   stream(
-    { objectMode: true },
+    {objectMode: true},
     gulp.src(bowerFiles()),
     gulp.src(paths.src.js)
       .pipe(babel())
@@ -46,26 +44,24 @@ gulp.task('js', function(){
       .pipe(ngTemp())
   )
     .pipe(concat(paths.dest.js))
-    .pipe(gulp.dest(paths.dest.dir))
+    .pipe(gulp.dest(paths.dest.dir));
 });
 
-gulp.task('css', function(){
+gulp.task('css', function() {
   gulp.src(paths.src.css)
     .pipe(concat(paths.dest.css))
     .pipe(autoprefixer())
-    .pipe(gulp.dest(paths.dest.dir))
+    .pipe(gulp.dest(paths.dest.dir));
 });
-
 
 // Watch
 
-gulp.task('watch', function(){
+gulp.task('watch', function() {
   gulp.watch(paths.src.index, ['index']);
   gulp.watch(paths.src.js,    ['js']);
   gulp.watch(paths.src.temps, ['js']);
   gulp.watch(paths.src.css,   ['css']);
 });
-
 
 // Default
 
