@@ -9,7 +9,7 @@ const routes = require('./routes')
 app.use(bodyParser.json())
 
 app.get('/', function(req, res){
-  res.sendFile(__dirname + '/index.html')
+  res.sendFile(process.cwd() + '/index.html')
 })
 
 io.on('connection', client => {
