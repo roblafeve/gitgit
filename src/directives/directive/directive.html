@@ -1,8 +1,0 @@
-<button ng-click="notifications.find()">find</button>
-<button ng-click="notifications.reset()">reset</button>
-<button ng-click="notifications.sort()">sort</button>
-
-<div ng-repeat="item in notifications.data.display">
-  <p><strong>{{item.subject.title}}</strong></p>
-  <p><small>{{item.last_read_at}}</small></p>
-</div>
